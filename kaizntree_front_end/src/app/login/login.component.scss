@@ -1,7 +1,3 @@
-input[type=text] {
-    padding:10px;
-    margin:10px 0; // add top and bottom margin
-  }
 .login
 {
     display: flexbox ;
@@ -12,4 +8,14 @@ input[type=text] {
 {
    display: flex;
    justify-content: space-around;
+}
+.logo
+{
+    height: 100px;
+}
+.logo-container
+{
+    display: flex ;
+    justify-content: center;
+    
 }

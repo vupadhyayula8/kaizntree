@@ -11,7 +11,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import mongoengine
+import os
 
+load_dotenv()
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+
+# mongoengine.connect(host=os.getenv('MONGO_CONNECTION_STRING'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,16 +45,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'corsheaders',
     'kaizntree'
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
-    # "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -76,12 +82,14 @@ WSGI_APPLICATION = "kaizntree_back_end.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "djongo",
+#         "NAME": 'kaizntree',
+#         'ENFORCE_SCHEMA': False,
+#         'HOST': 'MONGO_CONNECTION_STRING'
+#     }
+# }
 
 
 # Password validation
@@ -124,28 +132,3 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:4200',
-# ]
-
-CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = [
-    "127.0.0.1", 
-    "localhost",
-    # "*"
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1", 
-    "http://localhost:4200", 
-]
-# CORS_ALLOW_CREDENTIALS = False
-
-# CSRF_TRUSTED_ORIGINS = ["http://localhost:4200"]
-
-CORS_ALLOW_METHODS = [
-    "GET",
-    "POST"
-]
-
