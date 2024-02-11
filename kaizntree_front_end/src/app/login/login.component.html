@@ -1,15 +1,24 @@
-<div>
-    <mat-card>
-        <form [formGroup] = "loginForm" (ngSubmit) ="OnSubmit()" >
-           
-                <mat-label>Username</mat-label>
-                <input mat-Input formControlName ="name" name = "name">
-                <mat-label>Password</mat-label>
-                <input mat-Input formControlName ="password" name ="password" type="password">
-                <!-- <mat-error *ngIf="loginForm.value.name">Only alphabets and numbers are allowed</mat-error> -->
-                <button mat-button>Login</button>
-                <button mat-button>Password</button>
-            
-        </form>
+<div class="login">
+    <mat-card >
+        <div class="form">
+            <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+                <div>
+                    <mat-label>Username </mat-label>
+                    <input mat-Input formControlName="name" name="name">
+                </div>
+                <div>
+                    <mat-label>Password </mat-label>
+                    <input mat-Input formControlName="password" name="password" type="password">
+                </div>
+                <mat-error *ngIf="loginForm.get('name')?.hasError('pattern')">Only alphabets and numbers are
+                    allowed</mat-error>
+                <div>
+                    <button mat-button color="primary" [disabled]="loginForm.invalid">Login</button>
+                    <button mat-button>Register</button>
+                </div>
+
+            </form>
+        </div>
     </mat-card>
+
 </div>

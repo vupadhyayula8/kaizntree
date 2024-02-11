@@ -1,0 +1,15 @@
+input[type=text] {
+    padding:10px;
+    margin:10px 0; // add top and bottom margin
+  }
+.login
+{
+    display: flexbox ;
+    justify-content: center;
+    
+}
+.form
+{
+   display: flex;
+   justify-content: space-around;
+}

@@ -10,6 +10,6 @@ export class ApiServiceService {
   login(username:any,password:any):Observable<any>
   {
     console.log(username,password);
-    return this.http.post('127.0.0.1:8000',{'username':username,'password':password});
+    return this.http.post('http://127.0.0.1:8000',{'username':username,'password':password});
   }
 }
